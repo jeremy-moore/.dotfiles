@@ -2,6 +2,7 @@
 
 {
   programs.home-manager.enable = true;
+
   home.stateVersion = "22.05";
   home.username = "jim";
   home.homeDirectory = "/home/jim";
@@ -14,6 +15,8 @@
     enable = true;
     pinentryFlavor = "qt";
   };
+
+  nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
     emacs
