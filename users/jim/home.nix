@@ -26,8 +26,11 @@
     gnupg
     pinentry_qt
     thunderbird
+    tor-browser-bundle-bin
     tree
     notion-app-enhanced
+    unar
+    vlc
   ];
 
 }

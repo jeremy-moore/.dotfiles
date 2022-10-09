@@ -1,4 +1,3 @@
 #!/bin/sh
+nix flake update
 
-# Note: run as root to update nixos system packages:
-sudo nix-channel --update

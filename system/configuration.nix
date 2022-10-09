@@ -10,15 +10,22 @@
       ./hardware-configuration.nix
     ];
 
+  ### JIM - Make ready for flakes
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = "experimental-features = nix-command flakes";
+  };
 
-  ### JIM - Fix slow desktop load
-  boot.kernelParams = [ "nomodeset" ];
-  ###
+  nix.settings.experimental-features = "nix-command flakes";
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  boot = {
+    kernelParams = [ "nomodeset" ]; # jim - Fix slow boot
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+      efi.efiSysMountPoint = "/boot/efi";
+    };
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -56,7 +63,6 @@
 #  sound.enable = true;
 
   hardware.bluetooth.enable = true;
-
   hardware.pulseaudio.enable = false;
 
   services.pipewire = {
