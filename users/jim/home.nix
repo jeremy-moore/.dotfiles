@@ -29,8 +29,8 @@
     tor-browser-bundle-bin
     tree
     notion-app-enhanced
+    signal-desktop
     unar
-    vlc
+#   vlc
   ];
-
 }
