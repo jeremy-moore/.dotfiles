@@ -43,18 +43,16 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_AU.utf8";
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-
-  # Configure keymap in X11
   services.xserver = {
+    enable = true;
     layout = "au";
     xkbVariant = "";
+    xkbOptions = "ctrl:swapcaps";
+    displayManager.sddm.enable = true;
+    desktopManager.plasma5.enable = true;
   };
+
+  console.useXkbConfig = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = false;
@@ -74,12 +72,15 @@
 
   security.rtkit.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  virtualisation.docker.enable = true;
+
+  # User account:
   users.users.jim = {
     isNormalUser = true;
     description = "jim";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "docker" "networkmanager" "wheel" ];
     packages = with pkgs; [
+      docker
       firefox
       git
     ];
@@ -91,7 +92,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  wget
+    wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

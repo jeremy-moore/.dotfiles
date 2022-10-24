@@ -24,6 +24,7 @@
     git
     git-crypt
     gnupg
+    obsidian
     pinentry_qt
     thunderbird
     tor-browser-bundle-bin
