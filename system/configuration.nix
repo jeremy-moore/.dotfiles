@@ -43,16 +43,19 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_AU.utf8";
 
+
+
   services.xserver = {
     enable = true;
     layout = "au";
     xkbVariant = "";
-    xkbOptions = "ctrl:swapcaps";
+    # see /etc/X11/xkb/rules/base.lst (!options section) for key mapping
+    xkbOptions = "ctrl:nocaps, altwin:meta_win"; # map Ctrl to Caps Lock, Meta to Win/Cmd
     displayManager.sddm.enable = true;
     desktopManager.plasma5.enable = true;
   };
 
-  console.useXkbConfig = true;
+  console.useXkbConfig = true; 
 
   # Enable CUPS to print documents.
   services.printing.enable = false;
