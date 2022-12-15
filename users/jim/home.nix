@@ -32,6 +32,6 @@
     notion-app-enhanced
     signal-desktop
     unar
-#   vlc
+    vlc
   ];
 }
